@@ -7,52 +7,66 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Inter', sans-serif; line-height:1.6; color:#333; scroll-behavior:smooth; overflow-x:hidden; background:#f2f2f2; }
+    body { font-family:'Inter', sans-serif; line-height:1.6; color:#333; background:#f2f2f2; }
     a { text-decoration:none; color:inherit; }
     button { cursor:pointer; border:none; }
 
     header { 
-      position:fixed; 
-      top:0; 
-      left:0; 
-      width:100%; 
-      background:#fff; 
-      box-shadow:0 2px 5px rgba(0,0,0,0.1); 
+      position:fixed; top:0; left:0; width:100%; 
+      background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1); 
       z-index:1000; 
-      transition:top 0.4s;
     }
-    nav { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding:1rem 2rem; }
-    nav .logo { font-weight:700; font-size:1.5rem; color:#2c3e50; }
-    nav ul { display:flex; list-style:none; gap:1.5rem; }
-    nav ul li a { font-weight:500; padding:0.3rem 0.5rem; border-radius:5px; transition:0.3s; }
-    nav ul li a:hover, nav ul li a.active { background:#e0e0e0; color:#1abc9c; }
 
-    section { min-height:100vh; padding:100px 2rem 50px 2rem; display:flex; flex-direction:column; justify-content:center; background:#f2f2f2; }
+    nav { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding:1rem 2rem; }
+    .logo { font-weight:700; font-size:1.5rem; color:#2c3e50; }
+
+    ul { list-style:none; display:flex; gap:1.5rem; }
+    ul li a { font-weight:500; padding:0.3rem 0.5rem; border-radius:5px; transition:0.3s; }
+    ul li a:hover, ul li a.active { background:#e0e0e0; color:#1abc9c; }
+
+    /* Burger */
+    .burger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
+    .burger div { width:25px; height:3px; background:#2c3e50; transition:0.3s; }
+
+    .nav-links { display:flex; gap:1.5rem; }
+    @media(max-width:768px){
+      .nav-links { 
+        position:fixed; right:0; top:0; height:100vh; background:#fff; 
+        flex-direction:column; justify-content:center; align-items:center; 
+        width:0; overflow:hidden; transition:width 0.3s ease; 
+      }
+      .nav-links.open { width:60%; box-shadow:-2px 0 5px rgba(0,0,0,0.1); }
+      .burger { display:flex; }
+      ul { flex-direction:column; gap:2rem; }
+    }
+
+    section { min-height:100vh; padding:100px 2rem 50px 2rem; display:flex; flex-direction:column; justify-content:center; }
     .container { max-width:1100px; margin:0 auto; }
 
     h1,h2,h3 { margin-bottom:1rem; color:#2c3e50; }
     p { margin-bottom:1.2rem; color:#555; font-size:1.1rem; }
-    ul { margin-left:1.5rem; margin-bottom:1.2rem; }
+    ul li { margin-bottom:0.5rem; }
 
     .btn { display:inline-block; background:#1abc9c; color:#fff; padding:0.8rem 1.5rem; border-radius:8px; font-weight:600; transition:0.3s; margin-top:1rem; }
     .btn:hover { background:#16a085; }
 
     .service-card, .project-card, .blog-card { background:#fff; padding:1.5rem; border-radius:10px; margin-bottom:1.5rem; box-shadow:0 2px 5px rgba(0,0,0,0.05); transition:0.3s; }
-    .service-card:hover, .project-card:hover, .blog-card:hover { transform:translateY(-5px); }
     .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
 
     footer { text-align:center; padding:2rem; background:#fff; margin-top:2rem; color:#555; }
-
-    @media(max-width:768px){ 
-      nav ul { flex-direction:column; gap:1rem; } 
-    }
   </style>
 </head>
 <body>
 
-  <header>
-    <nav>
-      <div class="logo">Hospitify</div>
+<header>
+  <nav>
+    <div class="logo">Hospitify</div>
+    <div class="burger" id="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="nav-links" id="nav-links">
       <ul>
         <li><a href="#home" class="active">Accueil</a></li>
         <li><a href="#about">À propos</a></li>
@@ -61,89 +75,105 @@
         <li><a href="#blog">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-    </nav>
-  </header>
-
-  <!-- Home -->
-  <section id="home">
-    <div class="container">
-      <h1>Vous cherchez un site moderne, attractif et professionnel pour votre entreprise, restaurant ou hôtel ?</h1>
-      <p>Chez Hospitify, nous transformons votre présence en ligne en une véritable expérience pour vos visiteurs. Nos créations sont pensées pour séduire, informer et convertir vos clients.</p>
-      <p>Webify accompagne les hôtels et restaurants dans leur transformation digitale. Des sites rapides, élégants et sur mesure, conçus pour booster vos réservations directes et offrir une expérience client irréprochable.</p>
-      <a href="#contact" class="btn">Demander un devis gratuit</a>
     </div>
-  </section>
+  </nav>
+</header>
 
-  <!-- About -->
-  <section id="about">
-    <div class="container">
-      <h2>À propos de Hospitify</h2>
-      <p>Je suis un développeur indépendant spécialisé dans la création de sites internet pour l’hôtellerie et la restauration. Grâce à mon expertise technique et ma connaissance du secteur, je propose des solutions transparentes, rapides et 100 % sur mesure, adaptées aux besoins réels de chaque établissement. Mon objectif : donner à votre hôtel ou restaurant un outil moderne, efficace et rentable, qui reflète votre excellence et attire vos futurs clients.</p>
+<!-- Home -->
+<section id="home">
+  <div class="container">
+    <h1>Vous cherchez un site moderne, attractif et professionnel pour votre entreprise, restaurant ou hôtel ?</h1>
+    <p>Chez Hospitify, nous transformons votre présence en ligne en une véritable expérience pour vos visiteurs. Nos créations sont pensées pour séduire, informer et convertir vos clients.</p>
+    <p>Hospitify accompagne les hôtels et restaurants dans leur transformation digitale. Des sites rapides, élégants et sur mesure, conçus pour booster vos réservations directes et offrir une expérience client irréprochable.</p>
+    <a href="#contact" class="btn">Demander un devis gratuit</a>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <h2>À propos de Hospitify</h2>
+    <p>Je suis un développeur indépendant spécialisé dans la création de sites internet pour l’hôtellerie et la restauration. Grâce à mon expertise technique et ma connaissance du secteur, je propose des solutions transparentes, rapides et 100 % sur mesure, adaptées aux besoins réels de chaque établissement. Mon objectif : donner à votre hôtel ou restaurant un outil moderne, efficace et rentable, qui reflète votre excellence et attire vos futurs clients.</p>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+  <div class="container">
+    <h2>Services</h2>
+    <div class="cards">
+      <div class="service-card"><h3>Création de sites web sur mesure</h3><p>Design moderne et adapté à votre identité.</p></div>
+      <div class="service-card"><h3>Sites rapides et optimisés mobile</h3><p>Réservations faciles depuis tous les appareils.</p></div>
+      <div class="service-card"><h3>Intégration de réservation en ligne</h3><p>Simplifiez vos réservations et réduisez les commissions.</p></div>
+      <div class="service-card"><h3>SEO & visibilité Google</h3><p>Soyez trouvé par vos clients avant vos concurrents.</p></div>
+      <div class="service-card"><h3>Maintenance & accompagnement</h3><p>Support continu après la mise en ligne.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Services -->
-  <section id="services">
-    <div class="container">
-      <h2>Services</h2>
-      <div class="cards">
-        <div class="service-card"><h3>Création de sites web sur mesure</h3><p>Design moderne et adapté à votre identité.</p></div>
-        <div class="service-card"><h3>Sites rapides et optimisés mobile</h3><p>Réservations faciles depuis tous les appareils.</p></div>
-        <div class="service-card"><h3>Intégration de réservation en ligne</h3><p>Simplifiez vos réservations et réduisez les commissions.</p></div>
-        <div class="service-card"><h3>SEO & visibilité Google</h3><p>Soyez trouvé par vos clients avant vos concurrents.</p></div>
-        <div class="service-card"><h3>Maintenance & accompagnement</h3><p>Support continu après la mise en ligne.</p></div>
+<!-- Projects -->
+<section id="projects">
+  <div class="container">
+    <h2>Projets</h2>
+    <div class="cards">
+      <div class="project-card">
+        <h3>Transformation digitale sur mesure</h3>
+        <p>Chaque hôtel ou restaurant a une identité unique. Ce projet montre comment nous avons transformé une image de marque traditionnelle en une expérience digitale moderne et personnalisée, permettant d’attirer de nouveaux clients tout en restant fidèle à l’ADN de l’établissement.</p>
+      </div>
+      <div class="project-card">
+        <h3>Plus de réservations, moins d’intermédiaires</h3>
+        <p>Ce projet met en avant l’intégration d’un système de réservation directe. Résultat : moins de dépendance aux plateformes comme Booking, et plus de revenus générés en direct par l’établissement.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <div class="container">
-      <h2>Projets</h2>
-      <div class="cards">
-        <div class="project-card">
-          <h3>Transformation digitale sur mesure</h3>
-          <p>Chaque hôtel ou restaurant a une identité unique. Ce projet montre comment nous avons transformé une image de marque traditionnelle en une expérience digitale moderne et personnalisée, permettant d’attirer de nouveaux clients tout en restant fidèle à l’ADN de l’établissement.</p>
-        </div>
-        <div class="project-card">
-          <h3>Plus de réservations, moins d’intermédiaires</h3>
-          <p>Ce projet met en avant l’intégration d’un système de réservation directe. Résultat : moins de dépendance aux plateformes comme Booking, et plus de revenus générés en direct par l’établissement.</p>
-        </div>
-        <div class="project-card">
-          <h3>Une vitrine qui reflète votre excellence</h3>
-          <p>Un site internet est la vitrine de votre savoir-faire. Ici, nous avons conçu une interface élégante et intuitive, alignée sur le standing d’un hôtel haut de gamme, tout en facilitant la navigation des visiteurs.</p>
-        </div>
-        <div class="project-card">
-          <h3>Optimisé pour l’expérience client</h3>
-          <p>L’expérience utilisateur est au cœur de ce projet. De la recherche d’informations à la réservation, chaque étape a été pensée pour être fluide, rapide et agréable, afin de convertir les visiteurs en clients.</p>
-        </div>
-        <div class="project-card">
-          <h3>Technologie, performance et visibilité</h3>
-          <p>Un site performant est un site qui rapporte. Ici, l’accent a été mis sur la vitesse, l’optimisation mobile et le référencement naturel, permettant à l’établissement de gagner en visibilité et en efficacité.</p>
-        </div>
+<!-- Blog -->
+<section id="blog">
+  <div class="container">
+    <h2>Blog</h2>
+    <div class="cards">
+      <div class="blog-card">
+        <h3>Pourquoi un hôtel doit avoir son propre site en 2025</h3>
+        <p>Un hôtel qui n’a pas son site perd en crédibilité et en autonomie. Avoir un site permet de mieux contrôler son image, d’augmenter ses réservations directes et de réduire les commissions versées aux intermédiaires.</p>
+      </div>
+      <div class="blog-card">
+        <h3>5 erreurs à éviter sur le site d’un restaurant</h3>
+        <ul>
+          <li>Ne pas afficher le menu</li>
+          <li>Ne pas être adapté aux mobiles</li>
+          <li>Oublier les avis clients</li>
+          <li>Site trop lent</li>
+          <li>Pas de réservation en ligne</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Blog -->
-  <section id="blog">
-    <div class="container">
-      <h2>Blog</h2>
-      <div class="cards">
-        <div class="blog-card">
-          <h3>Pourquoi un hôtel doit avoir son propre site en 2025</h3>
-          <p>Un hôtel qui n’a pas son site perd en crédibilité et en autonomie. Avoir un site permet de mieux contrôler son image, d’augmenter ses réservations directes et de réduire les commissions versées aux intermédiaires.</p>
-        </div>
-        <div class="blog-card">
-          <h3>5 erreurs à éviter sur le site d’un restaurant</h3>
-          <ul>
-            <li>Ne pas afficher le menu</li>
-            <li>Ne pas être adapté aux mobiles</li>
-            <li>Oublier les avis clients</li>
-            <li>Site trop lent</li>
-            <li>Pas de réservation en ligne</li>
-          </ul>
-        </div>
-        <div class="blog-card">
-          <h3>Comment réduire les commissions Booking et Expedia</h3>
-          <p>La clé est simple : inciter vos clients à réserver directement via votre propre site. Offrez un avantage exclus
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <h2>Parlons de votre projet</h2>
+    <p>Vous souhaitez un site rapide, efficace et conçu pour votre établissement ? Contactez-moi dès aujourd’hui et discutons de vos besoins.</p>
+    <p>Email : <a href="mailto:hospitify4@gmail.com">hospitify4@gmail.com</a><br>
+       Téléphone / WhatsApp : 0489750320</p>
+    <a href="mailto:hospitify4@gmail.com" class="btn">Demander un devis gratuit</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Hospitify. Tous droits réservés.</p>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('nav-links');
+
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
