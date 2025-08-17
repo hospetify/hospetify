@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hospify - Hôtellerie et restauration</title>
+  <title>Hospitify - Hôtellerie et restauration</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Inter', sans-serif; line-height:1.6; color:#333; background:#dcdcdc; overflow-x:hidden; scroll-behavior:smooth; }
+    body { font-family:'Inter', sans-serif; line-height:1.6; color:#333; scroll-behavior:smooth; overflow-x:hidden; background:#f2f2f2; }
     a { text-decoration:none; color:inherit; }
     button { cursor:pointer; border:none; }
 
@@ -16,41 +16,18 @@
       top:0; 
       left:0; 
       width:100%; 
-      background:#cfcfcf; 
+      background:#fff; 
       box-shadow:0 2px 5px rgba(0,0,0,0.1); 
       z-index:1000; 
       transition:top 0.4s;
     }
     nav { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding:1rem 2rem; }
     nav .logo { font-weight:700; font-size:1.5rem; color:#2c3e50; }
-    
-    /* Menu normal */
     nav ul { display:flex; list-style:none; gap:1.5rem; }
     nav ul li a { font-weight:500; padding:0.3rem 0.5rem; border-radius:5px; transition:0.3s; }
-    nav ul li a:hover, nav ul li a.active { background:#b0b0b0; color:#1abc9c; }
+    nav ul li a:hover, nav ul li a.active { background:#e0e0e0; color:#1abc9c; }
 
-    /* Burger menu */
-    .burger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
-    .burger div { width:25px; height:3px; background:#333; border-radius:3px; }
-
-    .nav-links { transition:max-height 0.3s ease-in-out; overflow:hidden; }
-    .nav-links.show { max-height:500px; }
-    
-    @media(max-width:768px){
-      nav ul { 
-        position:absolute; 
-        top:60px; 
-        left:0; 
-        width:100%; 
-        background:#cfcfcf; 
-        flex-direction:column; 
-        align-items:center; 
-        max-height:0; 
-      }
-      .burger { display:flex; }
-    }
-
-    section { min-height:100vh; padding:100px 2rem 50px 2rem; display:flex; flex-direction:column; justify-content:center; }
+    section { min-height:100vh; padding:100px 2rem 50px 2rem; display:flex; flex-direction:column; justify-content:center; background:#f2f2f2; }
     .container { max-width:1100px; margin:0 auto; }
 
     h1,h2,h3 { margin-bottom:1rem; color:#2c3e50; }
@@ -60,19 +37,23 @@
     .btn { display:inline-block; background:#1abc9c; color:#fff; padding:0.8rem 1.5rem; border-radius:8px; font-weight:600; transition:0.3s; margin-top:1rem; }
     .btn:hover { background:#16a085; }
 
-    .service-card, .project-card, .blog-card { background:#cfcfcf; padding:1.5rem; border-radius:10px; margin-bottom:1.5rem; transition:0.3s; }
+    .service-card, .project-card, .blog-card { background:#fff; padding:1.5rem; border-radius:10px; margin-bottom:1.5rem; box-shadow:0 2px 5px rgba(0,0,0,0.05); transition:0.3s; }
     .service-card:hover, .project-card:hover, .blog-card:hover { transform:translateY(-5px); }
     .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
 
-    footer { text-align:center; padding:2rem; background:#cfcfcf; margin-top:2rem; color:#555; }
+    footer { text-align:center; padding:2rem; background:#fff; margin-top:2rem; color:#555; }
+
+    @media(max-width:768px){ 
+      nav ul { flex-direction:column; gap:1rem; } 
+    }
   </style>
 </head>
 <body>
 
   <header>
     <nav>
-      <div class="logo">Hospify</div>
-      <ul class="nav-links">
+      <div class="logo">Hospitify</div>
+      <ul>
         <li><a href="#home" class="active">Accueil</a></li>
         <li><a href="#about">À propos</a></li>
         <li><a href="#services">Services</a></li>
@@ -80,11 +61,6 @@
         <li><a href="#blog">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <div class="burger">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
     </nav>
   </header>
 
@@ -93,16 +69,16 @@
     <div class="container">
       <h1>Vous cherchez un site moderne, attractif et professionnel pour votre entreprise, restaurant ou hôtel ?</h1>
       <p>Chez Hospitify, nous transformons votre présence en ligne en une véritable expérience pour vos visiteurs. Nos créations sont pensées pour séduire, informer et convertir vos clients.</p>
-      <a href="#contact" class="btn">Contactez-nous dès maintenant</a>
+      <p>Webify accompagne les hôtels et restaurants dans leur transformation digitale. Des sites rapides, élégants et sur mesure, conçus pour booster vos réservations directes et offrir une expérience client irréprochable.</p>
+      <a href="#contact" class="btn">Demander un devis gratuit</a>
     </div>
   </section>
 
   <!-- About -->
   <section id="about">
     <div class="container">
-      <h2>À propos de Hospify</h2>
-      <p>Hospify est une agence spécialisée dans la création de sites web pour l’hôtellerie et la restauration. Nous offrons des solutions sur mesure, rapides, performantes et esthétiques.</p>
-      <p>Chaque site est conçu pour attirer et fidéliser vos clients, optimiser vos réservations et mettre en valeur vos services de manière professionnelle.</p>
+      <h2>À propos de Hospitify</h2>
+      <p>Je suis un développeur indépendant spécialisé dans la création de sites internet pour l’hôtellerie et la restauration. Grâce à mon expertise technique et ma connaissance du secteur, je propose des solutions transparentes, rapides et 100 % sur mesure, adaptées aux besoins réels de chaque établissement. Mon objectif : donner à votre hôtel ou restaurant un outil moderne, efficace et rentable, qui reflète votre excellence et attire vos futurs clients.</p>
     </div>
   </section>
 
@@ -127,23 +103,23 @@
       <div class="cards">
         <div class="project-card">
           <h3>Transformation digitale sur mesure</h3>
-          <p>Chaque hôtel ou restaurant a une identité unique. Ce projet montre comment nous avons transformé une image de marque traditionnelle en une expérience digitale moderne et personnalisée.</p>
+          <p>Chaque hôtel ou restaurant a une identité unique. Ce projet montre comment nous avons transformé une image de marque traditionnelle en une expérience digitale moderne et personnalisée, permettant d’attirer de nouveaux clients tout en restant fidèle à l’ADN de l’établissement.</p>
         </div>
         <div class="project-card">
           <h3>Plus de réservations, moins d’intermédiaires</h3>
-          <p>Ce projet met en avant l’intégration d’un système de réservation directe, réduisant la dépendance aux plateformes tierces.</p>
+          <p>Ce projet met en avant l’intégration d’un système de réservation directe. Résultat : moins de dépendance aux plateformes comme Booking, et plus de revenus générés en direct par l’établissement.</p>
         </div>
         <div class="project-card">
           <h3>Une vitrine qui reflète votre excellence</h3>
-          <p>Un site internet élégant et intuitif, aligné sur le standing d’un hôtel haut de gamme, tout en facilitant la navigation.</p>
+          <p>Un site internet est la vitrine de votre savoir-faire. Ici, nous avons conçu une interface élégante et intuitive, alignée sur le standing d’un hôtel haut de gamme, tout en facilitant la navigation des visiteurs.</p>
         </div>
         <div class="project-card">
           <h3>Optimisé pour l’expérience client</h3>
-          <p>Chaque étape pensée pour être fluide, rapide et agréable, afin de convertir les visiteurs en clients.</p>
+          <p>L’expérience utilisateur est au cœur de ce projet. De la recherche d’informations à la réservation, chaque étape a été pensée pour être fluide, rapide et agréable, afin de convertir les visiteurs en clients.</p>
         </div>
         <div class="project-card">
           <h3>Technologie, performance et visibilité</h3>
-          <p>Optimisé pour la vitesse, le mobile et le référencement naturel, permettant d’augmenter visibilité et efficacité.</p>
+          <p>Un site performant est un site qui rapporte. Ici, l’accent a été mis sur la vitesse, l’optimisation mobile et le référencement naturel, permettant à l’établissement de gagner en visibilité et en efficacité.</p>
         </div>
       </div>
     </div>
@@ -156,7 +132,7 @@
       <div class="cards">
         <div class="blog-card">
           <h3>Pourquoi un hôtel doit avoir son propre site en 2025</h3>
-          <p>Avoir un site permet de mieux contrôler son image, d’augmenter les réservations directes et de réduire les commissions versées aux intermédiaires.</p>
+          <p>Un hôtel qui n’a pas son site perd en crédibilité et en autonomie. Avoir un site permet de mieux contrôler son image, d’augmenter ses réservations directes et de réduire les commissions versées aux intermédiaires.</p>
         </div>
         <div class="blog-card">
           <h3>5 erreurs à éviter sur le site d’un restaurant</h3>
@@ -170,34 +146,4 @@
         </div>
         <div class="blog-card">
           <h3>Comment réduire les commissions Booking et Expedia</h3>
-          <p>Incitez vos clients à réserver directement via votre propre site avec des avantages exclusifs.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contactez-nous</h2>
-      <p>Email : <a href="mailto:hospitify4@gmail.com">hospitify4@gmail.com</a></p>
-      <p>WhatsApp / Téléphone : <a href="tel:+0489750320">0489750320</a></p>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Hospify. Tous droits réservés.</p>
-  </footer>
-
-  <!-- SCRIPT -->
-  <script>
-    const burger = document.querySelector(".burger");
-    const navLinks = document.querySelector(".nav-links");
-
-    burger.addEventListener("click", () => {
-      navLinks.classList.toggle("show");
-    });
-  </script>
-
-</body>
-</html>
+          <p>La clé est simple : inciter vos clients à réserver directement via votre propre site. Offrez un avantage exclus
