@@ -11,21 +11,28 @@
     a { text-decoration:none; color:inherit; }
     button { cursor:pointer; border:none; }
 
-    header { 
-      position:fixed; 
-      top:0; 
-      left:0; 
-      width:100%; 
-      background:#cfcfcf; 
-      box-shadow:0 2px 5px rgba(0,0,0,0.1); 
-      z-index:1000; 
-      transition:top 0.4s; /* transition fluide */
-    }
+    header { position:fixed; top:0; left:0; width:100%; background:#2f2f2f; color:#fff;
+      box-shadow:0 2px 5px rgba(0,0,0,0.1); z-index:1000; transition:top 0.4s; }
     nav { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:0 auto; padding:1rem 2rem; }
-    nav .logo { font-weight:700; font-size:1.5rem; color:#2c3e50; }
+    nav .logo { font-weight:700; font-size:1.5rem; color:#fff; }
     nav ul { display:flex; list-style:none; gap:1.5rem; }
-    nav ul li a { font-weight:500; padding:0.3rem 0.5rem; border-radius:5px; transition:0.3s; }
-    nav ul li a:hover, nav ul li a.active { background:#b0b0b0; color:#1abc9c; }
+    nav ul li a { font-weight:500; padding:0.3rem 0.5rem; border-radius:5px; transition:0.3s; color:#fff; }
+    nav ul li a:hover, nav ul li a.active { background:#444; color:#1abc9c; }
+
+    /* BOUTON BURGER */
+    .menu-toggle { display:none; flex-direction:column; cursor:pointer; gap:5px; }
+    .menu-toggle span { width:25px; height:3px; background:#fff; border-radius:2px; }
+
+    /* MENU MOBILE */
+    @media(max-width:768px){
+      nav ul { 
+        position:fixed; top:0; right:-100%; height:100vh; width:250px;
+        background:#2f2f2f; flex-direction:column; align-items:flex-start;
+        padding:4rem 2rem; gap:1.2rem; transition:0.4s;
+      }
+      nav ul.show { right:0; }
+      .menu-toggle { display:flex; }
+    }
 
     section { min-height:100vh; padding:100px 2rem 50px 2rem; display:flex; flex-direction:column; justify-content:center; background:#dcdcdc; }
     .container { max-width:1100px; margin:0 auto; }
@@ -41,9 +48,7 @@
     .service-card:hover, .project-card:hover, .blog-card:hover { transform:translateY(-5px); }
     .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
 
-    footer { text-align:center; padding:2rem; background:#cfcfcf; margin-top:2rem; color:#555; }
-
-    @media(max-width:768px){ nav ul { flex-direction:column; gap:1rem; } }
+    footer { text-align:center; padding:2rem; background:#2f2f2f; margin-top:2rem; color:#fff; }
   </style>
 </head>
 <body>
@@ -51,7 +56,10 @@
   <header>
     <nav>
       <div class="logo">Hospify</div>
-      <ul>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span><span></span><span></span>
+      </div>
+      <ul id="menu">
         <li><a href="#home" class="active">Accueil</a></li>
         <li><a href="#about">À propos</a></li>
         <li><a href="#services">Services</a></li>
@@ -62,100 +70,50 @@
     </nav>
   </header>
 
-  <!-- Home -->
   <section id="home">
     <div class="container">
       <h1>Vous cherchez un site moderne, attractif et professionnel pour votre entreprise, restaurant ou hôtel ?</h1>
-      <p>Chez Hospitify, nous transformons votre présence en ligne en une véritable expérience pour vos visiteurs. Nos créations sont pensées pour séduire, informer et convertir vos clients.</p>
-      <a href="#contact" class="btn">Contactez-nous dès maintenant</a>
+      <p>Chez Hospitify, nous transformons votre présence en ligne en une véritable expérience pour vos visiteurs.</p>
+      <a href="#contact" class="btn">Contactez-nous</a>
     </div>
   </section>
 
-  <!-- About -->
   <section id="about">
     <div class="container">
-      <h2>À propos de Hospify</h2>
-      <p>Hospify est une agence spécialisée dans la création de sites web pour l’hôtellerie et la restauration. Nous offrons des solutions sur mesure, rapides, performantes et esthétiques.</p>
-      <p>Chaque site est conçu pour attirer et fidéliser vos clients, optimiser vos réservations et mettre en valeur vos services de manière professionnelle.</p>
+      <h2>À propos</h2>
+      <p>Hospify est une agence spécialisée dans la création de sites web pour l’hôtellerie et la restauration.</p>
     </div>
   </section>
 
-  <!-- Services -->
   <section id="services">
     <div class="container">
       <h2>Services</h2>
       <div class="cards">
-        <div class="service-card"><h3>Création de sites web sur mesure</h3><p>Design moderne et adapté à votre identité.</p></div>
-        <div class="service-card"><h3>Sites rapides et optimisés mobile</h3><p>Réservations faciles depuis tous les appareils.</p></div>
-        <div class="service-card"><h3>Intégration de réservation en ligne</h3><p>Simplifiez vos réservations et réduisez les commissions.</p></div>
-        <div class="service-card"><h3>SEO & visibilité Google</h3><p>Soyez trouvé par vos clients avant vos concurrents.</p></div>
-        <div class="service-card"><h3>Maintenance & accompagnement</h3><p>Support continu après la mise en ligne.</p></div>
+        <div class="service-card"><h3>Création sur mesure</h3><p>Un design adapté à votre identité.</p></div>
+        <div class="service-card"><h3>Optimisation mobile</h3><p>Sites rapides et adaptés à tous.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
   <section id="projects">
     <div class="container">
       <h2>Projets</h2>
-      <div class="cards">
-        <div class="project-card">
-          <h3>Transformation digitale sur mesure</h3>
-          <p>Chaque hôtel ou restaurant a une identité unique. Ce projet montre comment nous avons transformé une image de marque traditionnelle en une expérience digitale moderne et personnalisée.</p>
-        </div>
-        <div class="project-card">
-          <h3>Plus de réservations, moins d’intermédiaires</h3>
-          <p>Ce projet met en avant l’intégration d’un système de réservation directe, réduisant la dépendance aux plateformes tierces.</p>
-        </div>
-        <div class="project-card">
-          <h3>Une vitrine qui reflète votre excellence</h3>
-          <p>Un site internet élégant et intuitif, aligné sur le standing d’un hôtel haut de gamme, tout en facilitant la navigation.</p>
-        </div>
-        <div class="project-card">
-          <h3>Optimisé pour l’expérience client</h3>
-          <p>Chaque étape pensée pour être fluide, rapide et agréable, afin de convertir les visiteurs en clients.</p>
-        </div>
-        <div class="project-card">
-          <h3>Technologie, performance et visibilité</h3>
-          <p>Optimisé pour la vitesse, le mobile et le référencement naturel, permettant d’augmenter visibilité et efficacité.</p>
-        </div>
-      </div>
+      <div class="project-card"><h3>Transformation digitale</h3><p>Modernisation complète pour hôtellerie et restauration.</p></div>
     </div>
   </section>
 
-  <!-- Blog -->
   <section id="blog">
     <div class="container">
       <h2>Blog</h2>
-      <div class="cards">
-        <div class="blog-card">
-          <h3>Pourquoi un hôtel doit avoir son propre site en 2025</h3>
-          <p>Avoir un site permet de mieux contrôler son image, d’augmenter les réservations directes et de réduire les commissions versées aux intermédiaires.</p>
-        </div>
-        <div class="blog-card">
-          <h3>5 erreurs à éviter sur le site d’un restaurant</h3>
-          <ul>
-            <li>Ne pas afficher le menu</li>
-            <li>Ne pas être adapté aux mobiles</li>
-            <li>Oublier les avis clients</li>
-            <li>Site trop lent</li>
-            <li>Pas de réservation en ligne</li>
-          </ul>
-        </div>
-        <div class="blog-card">
-          <h3>Comment réduire les commissions Booking et Expedia</h3>
-          <p>Incitez vos clients à réserver directement via votre propre site avec des avantages exclusifs.</p>
-        </div>
-      </div>
+      <div class="blog-card"><h3>Pourquoi un hôtel doit avoir son site</h3><p>Réduire les commissions et améliorer son image.</p></div>
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact">
     <div class="container">
-      <h2>Contactez-nous</h2>
+      <h2>Contact</h2>
       <p>Email : <a href="mailto:hospitify4@gmail.com">hospitify4@gmail.com</a></p>
-      <p>WhatsApp / Téléphone : <a href="tel:+0489750320">0489750320</a></p>
+      <p>WhatsApp : <a href="tel:+0489750320">0489750320</a></p>
     </div>
   </section>
 
@@ -163,25 +121,37 @@
     <p>© 2025 Hospify. Tous droits réservés.</p>
   </footer>
 
-  <!-- SCRIPT -->
   <script>
     let lastScrollTop = 0;
     const header = document.querySelector("header");
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
 
+    // disparition/reapparition header
     window.addEventListener("scroll", function() {
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      
       if (scrollTop > lastScrollTop) {
-        // On descend -> cacher
         header.style.top = "-80px"; 
       } else {
-        // On remonte -> montrer
         header.style.top = "0";
       }
-      
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+
+    // ouverture/fermeture menu mobile
+    menuToggle.addEventListener("click", () => {
+      menu.classList.toggle("show");
+    });
+
+    // fermer le menu quand on clique sur un lien
+    document.querySelectorAll("#menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        menu.classList.remove("show");
+      });
     });
   </script>
 
 </body>
 </html>
+
+
